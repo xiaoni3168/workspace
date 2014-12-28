@@ -68,14 +68,27 @@ module.exports = function (grunt) {
       options: {
         port: 9000,
         // Change this to '0.0.0.0' to access the server from outside.
-        hostname: 'localhost',
+        hostname: '0.0.0.0',
         livereload: 35729
       },
+        myServe: {
+            proxies:[
+                {
+                    context:'/api',
+                    host: 'localhost',
+                    port:1992,
+                    rewrite:{
+                        '^/api':''
+                    }
+                }
+            ]
+        },
       livereload: {
         options: {
           open: true,
           middleware: function (connect) {
             return [
+                require('grunt-connect-proxy/lib/utils'),
               connect.static('.tmp'),
               connect().use(
                 '/bower_components',
@@ -105,7 +118,14 @@ module.exports = function (grunt) {
       dist: {
         options: {
           open: true,
-          base: '<%= yeoman.dist %>'
+          base: '<%= yeoman.dist %>',
+            middleware: function (connect) {
+                return [
+                    require('grunt-connect-proxy/lib/utils').proxyRequest,
+                    connect.static('dist')
+                ];
+            }
+
         }
       }
     },
@@ -382,6 +402,16 @@ module.exports = function (grunt) {
     'connect:test',
     'karma'
   ]);
+
+    grunt.registerTask('myServe', [
+        'clean:server',
+        'wiredep',
+        'concurrent:server',
+        'autoprefixer',
+        'configureProxies:myServe',
+        'connect:livereload',
+        'watch'
+    ]);
 
   grunt.registerTask('build', [
     'clean:dist',
