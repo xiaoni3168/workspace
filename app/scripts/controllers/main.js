@@ -8,10 +8,14 @@
  * Controller of the angularWorkApp
  */
 angular.module('angularWorkApp')
-  .controller('MainCtrl', function ($scope) {
+  .controller('MainCtrl',['$scope','publicService', function ($scope,publicService) {
+        publicService.getTestData().then(function(data){
+            $scope.test = data.data;
+           console.log(data);
+        });
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
-  });
+  }]);

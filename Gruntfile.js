@@ -21,6 +21,7 @@ module.exports = function (grunt) {
     dist: 'dist'
   };
 
+    grunt.loadNpmTasks('grunt-connect-proxy');
   // Define the configuration for all the tasks
   grunt.initConfig({
 
@@ -68,7 +69,7 @@ module.exports = function (grunt) {
       options: {
         port: 9000,
         // Change this to '0.0.0.0' to access the server from outside.
-        hostname: '0.0.0.0',
+        hostname: '127.0.0.1',
         livereload: 35729
       },
         myServe: {
@@ -76,9 +77,10 @@ module.exports = function (grunt) {
                 {
                     context:'/api',
                     host: 'localhost',
-                    port:1992,
-                    rewrite:{
-                        '^/api':''
+                    changeOrigin: true,
+                    port:8081,
+                    rewrite: {
+                        '^/api': ''
                     }
                 }
             ]
