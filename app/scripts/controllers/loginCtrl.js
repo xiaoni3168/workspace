@@ -5,12 +5,19 @@ angular.module('angularWorkApp')
         var fn = $scope.fn = {};
 
         fn.login = function() {
+            var loginModalCtrl = ['$scope','$modalInstance',function($scope,$modalInstance){
+                var md = $scope.md = {};
+                md.hide = function() {
+                    console.log('a');
+                    $modalInstance.dismiss('cancel');
+                }
+            }];
+
             var loginModal = $modal.open({
-                scope: $scope,
+                controller: loginModalCtrl,
                 backdrop: 'static',
                 templateUrl: 'views/modal/loginModal.html',
                 show: true
             });
-            var scope = loginModal.$scope;
         }
     }]);
