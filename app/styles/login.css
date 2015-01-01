@@ -1,0 +1,9 @@
+.login-container {
+    position: absolute;
+    background-color: #ededed;
+    overflow: auto;
+    height: 100%;
+    width: 100%;
+    background-image: url("../images/Aatrox_Splash_1.jpg");
+    background-size: cover;
+}
