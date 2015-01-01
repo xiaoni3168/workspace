@@ -25,3 +25,27 @@
 .nav-list:hover {
     background-color: #009900;
 }
+
+/* override */
+.modal-content {
+    height: 500px;
+    background: rgba(255,255,255,0.3);
+    -webkit-animation: modal-glow 2.5s;
+    -webkit-animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes modal-glow {
+    0% {
+        box-shadow: 0 0 20px #e0f000;
+    }
+    50% {
+        box-shadow: 0 0 20px #888888;
+    }
+    100% {
+        box-shadow: 0 0 20px #e0f000;
+    }
+}
+
+.login-modal {
+    background: transparent;
+}
