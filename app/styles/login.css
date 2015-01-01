@@ -7,3 +7,21 @@
     background-image: url("../images/Aatrox_Splash_1.jpg");
     background-size: cover;
 }
+
+.login-header {
+    background-color: #006666;
+    box-shadow: 0 3px 3px #666666;
+    z-index: 1;
+    height: 50px;
+}
+
+.nav-list {
+    text-align: center;
+    cursor: pointer;
+    padding-top: 15px;
+    width: 100px;
+}
+
+.nav-list:hover {
+    background-color: #009900;
+}
