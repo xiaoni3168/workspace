@@ -1,5 +1,11 @@
 <div class="dashboard-container">
     <div class="dashboard-screen">
-        aa
+        <div>
+            <carousel interval="interval">
+                <slide ng-repeat="slide in slides" active="slide.active">
+                    <img style="width: 1025px ;height: 495px" ng-src="{{slide.image}}">
+                </slide>
+            </carousel>
+        </div>
     </div>
 </div>
