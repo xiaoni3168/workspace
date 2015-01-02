@@ -22,7 +22,7 @@ angular
   ])
     .config(function($httpProvider){
 //        $httpProvider.defaults.withCredentials = true;
-//        delete $httpProvider.defaults.headers.common['X-Requested-With'];
+        delete $httpProvider.defaults.headers.common['X-Requested-With'];
 
     })
   .config(function ($routeProvider) {
